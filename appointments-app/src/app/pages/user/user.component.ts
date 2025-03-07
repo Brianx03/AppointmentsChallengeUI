@@ -71,10 +71,7 @@ export class UserComponent implements OnInit {
         this.appointments = data;
         this.errorMessage = null;
       },
-      error: (err) => {
-        console.error('Error fetching appointments', err);
-        this.errorMessage = 'Failed to load appointments. Please try again.';
-      },
+      error: (err) => this.handleError(err)
     });
   }
 
@@ -94,10 +91,7 @@ export class UserComponent implements OnInit {
         this.appointments = this.appointments.filter(a => a.appointmentId !== appointment.appointmentId);
         this.errorMessage = null;
       },
-      error: (err) => {
-        console.error('Error deleting appointment', err);
-        this.errorMessage = 'Failed to delete appointment.';
-      }
+      error: (err) => this.handleError(err)
     });
   }
 
@@ -178,8 +172,9 @@ export class UserComponent implements OnInit {
     this.userService.updateAppointment(updatedAppointment).subscribe({
       next: () => {
         this.loadAppointments(this.selectedUserId!);
+        this.errorMessage = null;
       },
-      error: (err: any) => console.error('Error updating appointment', err),
+      error: (err) => this.handleError(err)
     });
   }
 

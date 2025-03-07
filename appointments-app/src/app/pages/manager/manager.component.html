@@ -1,5 +1,8 @@
 <div class="manager-container">
     <h2>Manager Page</h2>
+    <div *ngIf="errorMessage" class="error-box">
+        {{ errorMessage }}
+      </div> 
     <mat-card class="user-form">
         <mat-card-title>Create User</mat-card-title>
         <mat-card-content>

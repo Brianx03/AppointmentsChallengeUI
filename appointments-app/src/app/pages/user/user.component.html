@@ -1,9 +1,8 @@
 <div class="user-container">
     <h2>User Page</h2>
     <div *ngIf="errorMessage" class="error-box">
-        <mat-icon>error</mat-icon>
-        <span>{{ errorMessage }}</span>
-    </div>      
+        {{ errorMessage }}
+      </div> 
     <mat-form-field appearance="outline">
         <mat-label>Select User</mat-label>
         <mat-select [(ngModel)]="selectedUserId" (selectionChange)="onUserChange($event.value)">

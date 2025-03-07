@@ -8,19 +8,29 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSort, MatSortModule, Sort } from '@angular/material/sort';
+import { CommonModule } from '@angular/common';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-manager',
   standalone: true,
   imports: [ 
-    FormsModule,
-    MatTableModule, 
-    MatButtonModule, 
-    MatFormFieldModule, 
-    MatInputModule, 
-    MatCardModule,
-    MatIconModule,
-    MatSortModule,
+    CommonModule,
+        MatTableModule,
+        FormsModule,
+        MatCardModule,
+        MatIconModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatDatepickerModule,
+        MatInputModule,
+        MatNativeDateModule,
+        MatDialogModule,
+        MatSortModule,
   ],
   templateUrl: './manager.component.html',
   styleUrls: ['./manager.component.scss'],
@@ -32,18 +42,21 @@ export class ManagerComponent implements OnInit {
   displayedColumns: string[] = ['username', 'description', 'date', 'status', 'actions'];
   sortBy: string = 'date'; 
   ascending: boolean = false; 
+  errorMessage: string | null = null;
 
   private managerService = inject(ManagerService); 
 
   createUser() {
     if (!this.userName.trim()) return;
 
+    console.log('Creating user', this.userName);
     this.managerService.createUser(this.userName).subscribe({
       next: (res) => {
         alert(`${this.userName} created successfully`);
         this.userName = '';
+        this.errorMessage = null;
       },
-      error: (err) => console.error('Error creating user', err),
+      error: (err) => this.handleError(err)
     });
   }
 
@@ -102,5 +115,10 @@ export class ManagerComponent implements OnInit {
     this.sortBy = sort.active;
     this.ascending = sort.direction === 'asc';
     this.loadAppointments();
+  }
+
+  handleError(error: any) {
+    console.error('Error:', error);
+    this.errorMessage = error.message || 'An unexpected error occurred.';
   }
 }
