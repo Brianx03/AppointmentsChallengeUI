@@ -1,0 +1,26 @@
+<h2 mat-dialog-title>Edit Appointment</h2>
+<div mat-dialog-content class="appointment-form">
+    <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Appointment Description</mat-label>
+        <input matInput [(ngModel)]="editedAppointment.description">
+    </mat-form-field>
+
+    <div class="date-time-container">
+        <mat-form-field appearance="outline" class="half-width">
+            <mat-label>Appointment Date</mat-label>
+            <input matInput [matDatepicker]="picker" [(ngModel)]="editedAppointment.date">
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline" class="half-width">
+            <mat-label>Time</mat-label>
+            <input matInput type="time" [(ngModel)]="editedAppointment.time">
+        </mat-form-field>
+    </div>
+</div>
+
+<div mat-dialog-actions align="end">
+    <button mat-raised-button color="primary" class="save-button" (click)="close()">Cancel</button>
+    <button mat-raised-button color="primary" class="save-button" (click)="save()">Save</button>
+</div>

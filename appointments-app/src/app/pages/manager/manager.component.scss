@@ -1,0 +1,32 @@
+.manager-container {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.user-form, .appointments-table {
+    padding: 10px;
+    width: 100%;
+}
+
+.mat-form-field {
+    width: 100%;
+}
+
+.user-form form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%; 
+}
+
+input.mat-input-element {
+    width: 100%;
+}
+
+button {
+    height: 40px;
+    margin-left: 20px;
+}

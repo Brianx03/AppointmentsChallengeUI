@@ -1,0 +1,66 @@
+.user-container {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.user-form, .appointments-table {
+    padding: 10px;
+    width: 100%;
+}
+
+.mat-form-field {
+    width: 100%;
+    margin: 16px;
+
+}
+
+.user-form form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+button {
+    height: 40px;
+    margin-left: 20px;
+}
+
+.error-box {
+    color: #b00020;
+    background: #f8d7da;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: bold;
+  }
+  
+
+  .appointment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .date-time-container {
+    display: flex;
+    gap: 16px;
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+  
+  .half-width {
+    width: 50%;
+  }
+  
+  .save-button {
+    align-self: flex-start;
+  }
+  

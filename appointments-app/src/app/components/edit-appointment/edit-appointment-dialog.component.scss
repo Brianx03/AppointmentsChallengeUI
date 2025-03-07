@@ -1,0 +1,60 @@
+/* This will ensure there's padding around the entire dialog */
+::ng-deep .mat-dialog-container {
+    padding: 16px; /* Add padding inside the dialog container */
+  }
+  
+  /* Ensures the form fields have consistent spacing */
+  .appointment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Add spacing between form fields */
+  }
+  
+  /* Adjust spacing between date and time input fields */
+  .date-time-container {
+    display: flex;
+    gap: 16px; /* Add space between date and time inputs */
+  }
+  
+  /* Ensure all mat-form-fields are stretched to fill the container width */
+  .mat-form-field {
+    width: 100%;
+  }
+  
+  /* Adjust date and time inputs to 48% width (making them half-width) */
+  .half-width {
+    width: 48%; 
+  }
+  
+  /* Add spacing to buttons */
+  .save-button {
+    margin-left: 8px; /* Adjust spacing between the buttons */
+  }
+  
+  /* Padding inside the action buttons container */
+  .mat-dialog-actions {
+    padding: 16px;
+  }
+  
+  /* Apply padding directly to mat-form-fields for additional space inside */
+  .mat-form-field .mat-label {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  
+  /* Ensures the dialog content has proper spacing */
+  .mat-dialog-content {
+    padding: 16px; /* Add padding inside the dialog content */
+  }
+  
+  /* Adjust the mat-input element inside mat-form-fields to ensure no overlapping */
+  .mat-input-element {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  
+  /* Optional: Add padding to individual form fields for extra spacing */
+  .mat-form-field {
+    margin-bottom: 16px; /* Add spacing between form fields */
+  }
+  
