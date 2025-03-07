@@ -52,7 +52,6 @@ export class EditAppointmentDialogComponent {
   
     this.editedAppointment.date = `${adjustedDate.getFullYear()}-${(adjustedDate.getMonth() + 1).toString().padStart(2, '0')}-${adjustedDate.getDate().toString().padStart(2, '0')}T${adjustedDate.getHours().toString().padStart(2, '0')}:${adjustedDate.getMinutes().toString().padStart(2, '0')}:00`;
   
-    console.log(this.editedAppointment);
     this.dialogRef.close(this.editedAppointment);
   }
   

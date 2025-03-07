@@ -20,15 +20,13 @@ export class UserService {
   }
 
   getAllUsers(): Observable<any[]> {
-  return this.http.get<any[]>(`${this.apiUrl}/manager/users`).pipe(
-    catchError(this.handleError)
-  );
+  return this.http.get<any[]>(`${this.apiUrl}/manager/users`)
+  .pipe(catchError(this.handleError));
 }
 
   createAppointment(appointment: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/users/appointments`, appointment).pipe(
-      catchError(this.handleError) 
-    );
+    return this.http.post(`${this.apiUrl}/users/appointments`, appointment)
+    .pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {
@@ -49,6 +47,7 @@ export class UserService {
   }
   
   updateAppointment(appointment: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/users/appointment`, appointment);
+    return this.http.put(`${this.apiUrl}/users/appointment`, appointment)
+      .pipe(catchError(this.handleError));
   }  
 }

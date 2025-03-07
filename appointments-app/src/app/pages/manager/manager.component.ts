@@ -9,28 +9,20 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSort, MatSortModule, Sort } from '@angular/material/sort';
 import { CommonModule } from '@angular/common';
-import { MatSelectModule } from '@angular/material/select';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatDialogModule } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-manager',
   standalone: true,
   imports: [ 
     CommonModule,
-        MatTableModule,
-        FormsModule,
-        MatCardModule,
-        MatIconModule,
-        MatButtonModule,
-        MatFormFieldModule,
-        MatSelectModule,
-        MatDatepickerModule,
-        MatInputModule,
-        MatNativeDateModule,
-        MatDialogModule,
-        MatSortModule,
+    FormsModule,
+    MatTableModule, 
+    MatButtonModule, 
+    MatFormFieldModule, 
+    MatInputModule, 
+    MatCardModule,
+    MatIconModule,
+    MatSortModule,
   ],
   templateUrl: './manager.component.html',
   styleUrls: ['./manager.component.scss'],
