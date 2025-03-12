@@ -2,7 +2,7 @@
     <h2>User Page</h2>
     <div *ngIf="errorMessage" class="error-box">
         {{ errorMessage }}
-    </div> 
+    </div>
     <mat-form-field appearance="outline">
         <mat-label>Select User</mat-label>
         <mat-select [(ngModel)]="selectedUserId" (selectionChange)="onUserChange($event.value)">
@@ -13,27 +13,36 @@
     </mat-form-field>
     <div *ngIf="selectedUserId" class="appointment-form">
         <h3>Add New Appointment</h3>
-        <mat-form-field appearance="outline" class="full-width">
-            <mat-label>Appointment Description</mat-label>
-            <input matInput [(ngModel)]="newAppointment.description">
-        </mat-form-field>
-        <div class="date-time-container">
-            <mat-form-field appearance="outline" class="half-width">
-                <mat-label>Appointment Date</mat-label>
-                <input matInput [matDatepicker]="picker" [(ngModel)]="newAppointment.date">
-                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
+        <form #appointmentForm="ngForm" (ngSubmit)="saveAppointment()" novalidate>
+
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Appointment Description</mat-label>
+                <input matInput [(ngModel)]="newAppointment.description" name="description"
+                      required pattern="^[a-zA-Z0-9\s]+$" #descriptionModel="ngModel">
+                <mat-error *ngIf="descriptionModel.invalid && descriptionModel.touched">
+                    Only letters, numbers, and spaces are allowed.
+                </mat-error>
             </mat-form-field>
-            <mat-form-field appearance="outline" class="half-width">
-                <mat-label>Time</mat-label>
-                <input matInput type="time" [(ngModel)]="newAppointment.time">
-            </mat-form-field>
-        </div>
-        <button mat-raised-button color="primary" class="save-button" (click)="saveAppointment()">Save Appointment</button>
-        <div *ngIf="errorMessage" class="error-box">
-            {{ errorMessage }}
-        </div> 
-        <p></p>
+            <div class="date-time-container">
+                <mat-form-field appearance="outline" class="half-width">
+                    <mat-label>Appointment Date</mat-label>
+                    <input matInput [matDatepicker]="picker" [(ngModel)]="newAppointment.date" name="date" required>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="half-width">
+                    <mat-label>Time</mat-label>
+                    <input matInput type="time" [(ngModel)]="newAppointment.time" name="time" required>
+                </mat-form-field>
+            </div>
+            <button mat-raised-button color="primary" class="save-button" type="submit" [disabled]="appointmentForm.invalid">
+                Save Appointment
+            </button>
+            <p></p>
+            <div *ngIf="errorMessage" class="error-box">
+                {{ errorMessage }}
+            </div>
+        </form>
     </div>
     <mat-card class="appointments-table">
         <mat-card-title>User Appointments</mat-card-title>
@@ -62,7 +71,6 @@
                         </button>
                     </td>                    
                 </ng-container>
-            
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>                

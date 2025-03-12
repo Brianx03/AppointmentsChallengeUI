@@ -6,15 +6,23 @@
     <mat-card class="user-form">
         <mat-card-title>Create User</mat-card-title>
         <mat-card-content>
-            <form (ngSubmit)="createUser()">
+          <form #userForm="ngForm" (ngSubmit)="createUser()" novalidate>
             <div class="form-container">
                 <mat-form-field appearance="outline">
-                <mat-label>User Name</mat-label>
-                <input matInput [(ngModel)]="userName" name="userName" required>
-                </mat-form-field>
-                <button mat-raised-button color="primary" type="submit">Create</button>
+                    <mat-label>User Name</mat-label>
+                    <input matInput [(ngModel)]="userName" name="userName"
+                          required pattern="^[a-zA-Z0-9\s]+$"
+                          #userNameModel="ngModel"
+                          [ngModelOptions]="{ updateOn: 'blur' }">
+                    <mat-error *ngIf="userNameModel.invalid && userNameModel.touched">
+                        Only letters, numbers, and spaces are allowed.
+                    </mat-error>
+                </mat-form-field>     
+                <button mat-raised-button color="primary" type="submit" [disabled]="userForm.invalid">
+                    Create
+                </button>
             </div>
-            </form>
+        </form>
         </mat-card-content>
     </mat-card>
       
